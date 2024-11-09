@@ -218,7 +218,7 @@ pub async fn fetch<R: Runtime>(
             )
             .is_allowed(&url)
             {
-                let mut builder = reqwest::ClientBuilder::new();
+                let mut builder = reqwest::ClientBuilder::new().danger_accept_invalid_certs(true);
 
                 if let Some(timeout) = connect_timeout {
                     builder = builder.connect_timeout(Duration::from_millis(timeout));
